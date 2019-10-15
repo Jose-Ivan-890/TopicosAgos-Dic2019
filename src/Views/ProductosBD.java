@@ -45,19 +45,21 @@ public ProductosBD(){
 
 
         CrearTabla();
+        btnAgregar.setOnAction(event -> new Producto(tbvTabla));
+
+    }
+
 /*
 btnAgregar.setOnAction(event ->  Abrir_Producto());
 
 }
 
     private void Abrir_Producto() {
-    Producto ventana =new Producto();
+    Producto ventana =new Producto(tbvTabla);
     }
- */  //sirve lo mismo que el de abajo
+  //sirve lo mismo que el de abajo
+*/
 
-        btnAgregar.setOnAction(event -> new Producto());
-
-    }
 
     private void CrearTabla() {
         TableColumn<TblProductos,Integer> tcID= new TableColumn<>("Id");

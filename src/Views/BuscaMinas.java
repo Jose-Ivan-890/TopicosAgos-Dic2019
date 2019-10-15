@@ -43,7 +43,8 @@ public class BuscaMinas extends Stage {
     grpCampo=new GridPane();
     arCeldas = new Button[15][15];
 
-    btnGenerar.addEventHandler(MouseEvent.MOUSE_CLICKED,new EventoBoton());
+ btnGenerar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventoBoton());
+
 
         for (int i = 0; i <15 ; i++) {
             for (int j = 0; j <15 ; j++) {
@@ -60,6 +61,8 @@ public class BuscaMinas extends Stage {
 
 
     }//clase GUI
+
+
 
     public int[] NumerosSinRepetir(int cantidad,int auxiliar){ //creando mio
         Random rd = new Random();

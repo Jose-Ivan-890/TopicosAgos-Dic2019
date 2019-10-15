@@ -1,6 +1,7 @@
 package Componets;
 
 import Models.TblProductos;
+import Views.Producto;
 import Views.ProductosBD;
 import javafx.event.Event;
 import javafx.scene.control.Button;
@@ -15,6 +16,7 @@ public class ButtonCell extends TableCell<TblProductos,String> {
     Button btnCelda;
     int opc;
     TblProductos objtp;
+    Producto objprod;
     public ButtonCell(int opc){
         this.opc=opc;
         if (opc == 1) {
@@ -35,10 +37,11 @@ public class ButtonCell extends TableCell<TblProductos,String> {
     }
 
     private void editar() {
-        objtp = ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
-        objtp.upproducto();
-        ButtonCell.this.getTableView().setItems(objtp.selallproducto());
-        ButtonCell.this.getTableView().refresh();
+
+        objprod= new Producto(ButtonCell.this.getTableView());
+
+
+
     }
 
     @Override

@@ -6,7 +6,8 @@ import javafx.event.EventHandler;
 
 public class EventoBoton implements EventHandler {
 
-    BuscaMinas obj = new BuscaMinas();
+ //   BuscaMinas obj = new BuscaMinas();
+
 
     @Override
     public void handle(Event event) {
