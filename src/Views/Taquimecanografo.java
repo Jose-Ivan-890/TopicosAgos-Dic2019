@@ -19,7 +19,7 @@ public class Taquimecanografo extends Stage {
 private Scene escena;
 private VBox vbox, vTeclado;
 private ToolBar tlbMenu;
-private TextArea txtContenido,txtEscritura;
+public TextArea txtContenido,txtEscritura;
 private HBox[] filas;
 private Button btnAbrir;
 private FileChooser flcArchivo;

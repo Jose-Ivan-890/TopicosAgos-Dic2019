@@ -22,6 +22,8 @@ public class BuscaMinas extends Stage {
     private GridPane grpCampo;
     private Scene escena;
     private Button [][] arCeldas;
+    private int minas,contador =0;
+    private  boolean gano;
 
 
     public BuscaMinas(){ //se crea la interfaz grafica
@@ -33,6 +35,8 @@ public class BuscaMinas extends Stage {
 
 
     private void CrearGUI(){
+        gano= new Boolean(false);
+
     vBox= new VBox();
     hbox= new HBox();
     lblMinas = new Label("No. Minas");
@@ -42,8 +46,9 @@ public class BuscaMinas extends Stage {
     hbox.getChildren().addAll(lblMinas,txtNoMinas,btnGenerar); //agragamos el labe la caja de texto y el boton en el HBox
     grpCampo=new GridPane();
     arCeldas = new Button[15][15];
-
- btnGenerar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventoBoton());
+    minas= Integer.parseInt(txtNoMinas.getText());//lo que las minas agregaran
+    int nminas[][] = NumerosSinRepetir(minas+1); // agregado
+ btnGenerar.setOnAction(event -> Generar());
 
 
         for (int i = 0; i <15 ; i++) {
@@ -51,36 +56,55 @@ public class BuscaMinas extends Stage {
                 arCeldas[i][j]=new Button();//"-" o '-'
                 arCeldas[i][j].setPrefSize(20,20);
                 arCeldas[i][j].setStyle("-fx-base: #00FF04 ");
+               // arCeldas[i][j].setsetTipo(numeroAleatorio());// agregado
                 grpCampo.add(arCeldas[i][j],i,j);
 
 
             }//finalisa el for j
         }//finalisa for i
+    /*
+        for (int i = 0; i <minas ; i++) {
+            arCeldas[nminas[0][i]][nminas[1][i]].setTipo(0); // agregado
+        }
+    */
         vBox.getChildren().addAll(hbox,grpCampo);
         escena= new Scene(vBox, 300,400);
 
 
     }//clase GUI
 
+    private Object numeroAleatorio() {
+        Random rd= new Random();
+        int NumeroAl=(int)(rd.nextDouble()*2);
+        return NumeroAl+1;
+    }
+
+    private void Generar() {
+        gano= false;
+        contador=0;
+    }
 
 
-    public int[] NumerosSinRepetir(int cantidad,int auxiliar){ //creando mio
+    public int[][] NumerosSinRepetir(int cantidad){ //creando mio
         Random rd = new Random();
-        int b[] = new int[cantidad];
+        int b[][] = new int[2][cantidad];
         int cont=0;
-        boolean v,cero=false;
+        boolean v;
 
         while (cont<cantidad){
-            int numero =(int)(rd.nextDouble() * auxiliar);
-            v=true;
+            int n1 =(int)(rd.nextDouble() * 7);
+            int n2 =(int)(rd.nextDouble() * 7);
+            v=false;
             for (int i = 0; i < cantidad; i++) {
-                if (numero == b[i])
+                if (n1 == b[0][i] && n2 == b[1][i])
                 {v=false; }
-
-                if (!cero&&numero==1){cero=true;numero=0;}
-                if (v){b [cont]=numero; cont++;}
-
             }
+            if (!v){
+                b[0][contador] = n1;
+                b[1][contador] = n2;
+                contador++;
+            }
+
         }return b;
 
     }

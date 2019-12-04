@@ -10,7 +10,7 @@ package Views;
 
 public class Producto extends Stage {
     private Label[] lbCampos;
-    private TextField txtID,txtNombre,txtCant,txtCosto,txtPrecio,txtTalla;
+    public TextField txtID,txtNombre,txtCant,txtCosto,txtPrecio,txtTalla;
     private ComboBox cbxMarca;
     private VBox vFormulario;
     private HBox [] hBoxes;
@@ -18,6 +18,7 @@ public class Producto extends Stage {
     private Scene scene;
     private  TblProductos objp ;
     private TableView tbvTabla;
+    public boolean isEdit=false;
 
 
 
@@ -72,14 +73,19 @@ public class Producto extends Stage {
     private void Guardar_Producto(){
 
         try {// aqui se recibe el error de Producto TblProducto linea 65
+
             objp.setDscproductos(txtNombre.getText());
             objp.setCantidad(Integer.parseInt(txtCant.getText()));
             objp.setCosto(Float.parseFloat(txtCosto.getText()) );
             objp.setPrecio(Float.parseFloat(txtPrecio.getText()) );
             objp.setTalla(txtTalla.getText() );
 
+            if (isEdit ) {
+                objp.setIdproductos(Integer.parseInt(txtID.getText()));
+                objp.upproducto();
+            }else
+                {objp.insproducto();}
 
-            objp.insproducto();
 
             Alert alert =new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Mensaje del sistema");

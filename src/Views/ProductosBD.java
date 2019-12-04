@@ -1,6 +1,8 @@
 package Views;
 
 import Componets.ButtonCell;
+import Evento.BuscarProducto;
+import Evento.EventoTeclado;
 import Models.TblMarca;
 import Models.TblProductos;
 import javafx.scene.Scene;
@@ -15,12 +17,12 @@ import java.util.PropertyPermission;
 
 public class ProductosBD extends Stage {
 
-    private TextField txtBusqueda;
+    public TextField txtBusqueda;
     private Scene scene;
     private VBox vFormulario;
     private HBox hboxBuscar;
     private Button btnBuscar,btnAgregar;
-    private TableView tbvTabla;
+    public TableView tbvTabla;
 
 
 public ProductosBD(){
@@ -35,6 +37,7 @@ public ProductosBD(){
         hboxBuscar = new HBox();
         btnBuscar = new Button("Buscar");
         txtBusqueda = new TextField();
+        txtBusqueda.setOnKeyPressed(new BuscarProducto(this));
         btnAgregar = new Button("Agregar");
         vFormulario = new VBox();
         tbvTabla = new TableView();
@@ -48,6 +51,7 @@ public ProductosBD(){
         btnAgregar.setOnAction(event -> new Producto(tbvTabla));
 
     }
+
 
 /*
 btnAgregar.setOnAction(event ->  Abrir_Producto());

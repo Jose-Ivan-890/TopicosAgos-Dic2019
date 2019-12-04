@@ -1,6 +1,7 @@
 package sample;
 
-import Evento.EventoBoton;
+import Componets.ClienteSocket;
+import Componets.Corredor;
 import Evento.EventoVentana;
 import Views.BuscaMinas;
 import Views.ProductosBD;
@@ -8,18 +9,11 @@ import Views.Taquimecanografo;
 import javafx.application.Application;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Menu;
 import javafx.stage.WindowEvent;
@@ -82,6 +76,15 @@ public class Main extends Application  implements  EventHandler {
         escena.getStylesheets().add(getClass().getResource("../CSS/Bootstrap3.css").toExternalForm());// carga el estilo de cascadas
         escena.getStylesheets().add(getClass().getResource("../CSS/estilos.css").toExternalForm());
 
+        //*************************HILOS************************************
+
+        new Corredor("Juan").start(); //Clase + funcion
+        new Corredor("flash").start();
+        new Corredor("pepe pepe").start();
+        new Corredor("Chabelo").start();
+        new Corredor("Rubensin").start();
+
+        //*************************HILOS************************************
         // EventoVentana Ev= new EventoVentana();  //mio propuesta
         // primaryStage.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST,Ev()); // estos dos codigos  es lo mismo que el de abajo
 
@@ -92,7 +95,7 @@ public class Main extends Application  implements  EventHandler {
         primaryStage.setScene(escena);
         primaryStage.show();
 
-
+        ClienteSocket objC = new ClienteSocket();
     }
 
 private  void EventosMenu(int opc){
