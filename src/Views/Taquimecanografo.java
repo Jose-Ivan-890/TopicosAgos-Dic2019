@@ -1,12 +1,14 @@
 package Views;
 
 import Evento.EventoTeclado;
+import Evento.EventoVentana;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -55,9 +57,11 @@ private Button[] artFuncion,artNumeros,arTTabulador,arTEspacio,arTMayus,arTShift
         txtEscritura.setPrefRowCount(5);
         txtEscritura.setOnKeyPressed(new EventoTeclado());
         /** creamos la seccion del teclado*/
+
         CrearTeclado ();
         vbox.getChildren().addAll(tlbMenu,txtContenido,txtEscritura,vTeclado);
-
+       // int postBTN=0;
+//arTTabulador[postBTN].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventoVentana(txtEscritura));
 
         escena= new Scene(vbox,400, 500);
 
@@ -68,7 +72,7 @@ private Button[] artFuncion,artNumeros,arTTabulador,arTEspacio,arTMayus,arTShift
         flcArchivo=new FileChooser();
         flcArchivo.setTitle("Buscar archivo");
        File archivo = flcArchivo.showOpenDialog(this);
-        System.out.println("hola hola hola hola");
+
 
     }
 
