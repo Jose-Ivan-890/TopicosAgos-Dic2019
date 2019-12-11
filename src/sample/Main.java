@@ -3,6 +3,7 @@ package sample;
 import Componets.ClienteSocket;
 import Componets.Corredor;
 import Evento.EventoVentana;
+import Views.BatallaNaval;
 import Views.BuscaMinas;
 import Views.ProductosBD;
 import Views.Taquimecanografo;
@@ -13,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Menu;
@@ -25,7 +27,7 @@ public class Main extends Application  implements  EventHandler {
     private BorderPane contenedor;
     private MenuBar mnbMenu;
     private Menu menCompetencia1, menCompetencia12, menSalir;
-    private MenuItem mitBuscaMinas,mitSalir,mitTaquimecanografo,mitProductosBD;
+    private MenuItem mitBuscaMinas,mitSalir,mitTaquimecanografo,mitProductosBD,mitBatallaNaval;
     private Button PruebaEvent;
 
     @Override
@@ -50,14 +52,18 @@ public class Main extends Application  implements  EventHandler {
     mitSalir= new MenuItem("Salir");//le pones el nombre de como se llamara el item
         mitTaquimecanografo = new MenuItem("Taquimecanografo");
         mitProductosBD= new MenuItem("Tienda");
+        mitBatallaNaval=new MenuItem("Batalla Naval");
 
                 mitBuscaMinas.setOnAction(event -> EventosMenu(1));
                 mitTaquimecanografo.setOnAction(event -> EventosMenu(2));
                 mitProductosBD.setOnAction(event -> EventosMenu(3));
        mitSalir.setOnAction(event -> EventosMenu(100));
+       mitBatallaNaval.setOnAction(event -> EventosMenu(4));
+
 
    menSalir.getItems().addAll(mitSalir);//sirve para agregar un item al menu bar
     menCompetencia1.getItems().addAll(mitBuscaMinas,mitTaquimecanografo,mitProductosBD);
+    menCompetencia12.getItems().addAll(mitBatallaNaval);//aqui va lo de la competencia 2
 
      //  PruebaEvent=new Button("evento handle"); //crear boton
       // contenedor.setCenter(PruebaEvent);
@@ -107,6 +113,9 @@ private  void EventosMenu(int opc){
         break;
         case 3: new ProductosBD();
             break;
+        case 4: new BatallaNaval();
+        break;
+
 
     }
     }

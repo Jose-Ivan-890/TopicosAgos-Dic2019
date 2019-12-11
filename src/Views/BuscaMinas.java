@@ -1,14 +1,10 @@
 package Views;
 
-import Evento.EventoBoton;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -17,7 +13,6 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class BuscaMinas extends Stage {
     /*
@@ -81,6 +76,11 @@ public class BuscaMinas extends Stage {
     }//clase GUI
  */ //este se pasa arriba
 
+
+    public boolean isBandera() {
+        return bandera;
+    }
+
     public BuscaMinas (){
         scene = new Scene(createContent());
         this.setTitle("Buscaminas :)");
@@ -89,8 +89,9 @@ public class BuscaMinas extends Stage {
     }
 
     private static final int TILE_SIZE = 40;
-    private static final int W = 300;
-    private static final int H = 200;
+    private static final int W = 600;
+    private static final int H = 400;
+    boolean bandera;
 
     private static final int X_TILES = W / TILE_SIZE;
     private static final int Y_TILES = H / TILE_SIZE;
@@ -214,7 +215,9 @@ public class BuscaMinas extends Stage {
                 scene.setRoot(createContent());
                 return;
             }
-
+            if(hasBomb){
+                System.out.println("YOU WIN");
+            }
             isOpen = true;
             text.setVisible(true);
             border.setFill(null);

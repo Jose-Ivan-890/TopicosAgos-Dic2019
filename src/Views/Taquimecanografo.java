@@ -1,19 +1,15 @@
 package Views;
 
 import Evento.EventoTeclado;
-import Evento.EventoVentana;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 
 import java.io.File;
 
@@ -51,11 +47,12 @@ private Button[] artFuncion,artNumeros,arTTabulador,arTEspacio,arTMayus,arTShift
         txtContenido.setPrefColumnCount(100);/*revisarlo*/
         txtContenido.setPrefRowCount(10);
         txtContenido.setEditable(false);
-
+        int inicial=0;
         /** Caja de texto donde escribiremos*/
         txtEscritura = new TextArea();
         txtEscritura.setPrefRowCount(5);
         txtEscritura.setOnKeyPressed(new EventoTeclado());
+        txtEscritura.getText();
         /** creamos la seccion del teclado*/
 
         CrearTeclado ();
@@ -115,5 +112,4 @@ private Button[] artFuncion,artNumeros,arTTabulador,arTEspacio,arTMayus,arTShift
             hFilas.getChildren().add(arBotones[i]);
         }
     }
-
 }
